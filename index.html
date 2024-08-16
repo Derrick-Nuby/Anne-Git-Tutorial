@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set JWT Cookie</title>
 </head>
+
 <body>
-    <h1>Anne is Good At Coding</h1>
-    <h2>Her teacher is Derrick</h2>
+  <button id="setCookieBtn">Set JWT Cookie</button>
+
+  <script>
+    const setCookieBtn = document.getElementById('setCookieBtn');
+
+    setCookieBtn.addEventListener('click', () => {
+      const jwtValue = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YjdiZDFhODVlZDVjMGUwN2EzZTIwZiIsInVzZXJuYW1lIjoiZGVycmljayIsImVtYWlsIjoiZGVycmlja2lyYWR1QGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMzM2OTExNH0.mD6PR02jSyeKIHcBJ7z7Lz1UtirRGBvG2RNFBDGpz0A';
+      const expires = new Date(Date.now() + (10 * 365 * 24 * 60 * 60 * 1000));
+
+      document.cookie = `jwt=${jwtValue}; expires=${expires.toUTCString()}; domain=base-forms.onrender.com; path=/`;
+      alert('JWT Cookie Set!');
+    });
+  </script>
 </body>
+
 </html>
