@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set JWT Cookie</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USSD Trigger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .ussd-button {
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .ussd-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
-  <button id="setCookieBtn">Set JWT Cookie</button>
 
-  <script>
-    const setCookieBtn = document.getElementById('setCookieBtn');
+<button class="ussd-button" onclick="triggerUSSD()">Dial USSD Code</button>
 
-    setCookieBtn.addEventListener('click', () => {
-      const jwtValue = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YjdiZDFhODVlZDVjMGUwN2EzZTIwZiIsInVzZXJuYW1lIjoiZGVycmljayIsImVtYWlsIjoiZGVycmlja2lyYWR1QGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMzM2OTExNH0.mD6PR02jSyeKIHcBJ7z7Lz1UtirRGBvG2RNFBDGpz0A';
-      const expires = new Date(Date.now() + (10 * 365 * 24 * 60 * 60 * 1000));
+<script>
+    function triggerUSSD() {
+        const ussdCode = "*123#"; // Replace with your USSD code
+        window.location.href = `tel:${ussdCode}`;
+    }
+</script>
 
-      document.cookie = `jwt=${jwtValue}; expires=${expires.toUTCString()}; domain=base-forms.onrender.com; path=/`;
-      alert('JWT Cookie Set!');
-    });
-  </script>
 </body>
-
 </html>
